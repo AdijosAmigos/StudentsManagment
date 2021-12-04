@@ -22,4 +22,8 @@ public class User {
     public UserType getType() {
         return type;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

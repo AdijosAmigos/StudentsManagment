@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CourseInMemoryRepository implements CourseRepository {
 
-    HashMap<Integer, Course> idToCourse;
+    private final HashMap<Integer, Course> idToCourse;
 
     public CourseInMemoryRepository(HashMap<Integer, Course> idToCourse) {
         this.idToCourse = idToCourse;
