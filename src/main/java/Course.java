@@ -24,8 +24,11 @@ public class Course {
         this.students = students;
     }
 
+    public int getId() {
+        return id;
+    }
 
-//    TODO: dopisac testy
+    //    TODO: dopisac testy
 
     void addStudent(User user) {
         if (!(user.getType() == UserType.STUDENT)) {
