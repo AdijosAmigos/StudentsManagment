@@ -7,16 +7,20 @@ public class Course {
 
 
 //  TODO: dopisac walidacje id oraz name (zaimplementowac + testy)
-
+//  TODO: dopisac testy
 
     public Course(int id, String name, List<User> students) {
 
         if (id < 0) {
-            throw new IllegalArgumentException("Id must be greater or equal to 0!");
+            throw new IllegalArgumentException("Course ID must be greater od equal to 0");
         }
 
         if (name.length() <= 0) {
-            throw new IllegalArgumentException("Length must be geater than 0!");
+            throw new IllegalArgumentException("Your course name length must be greater than one character");
+        }
+
+        if(students.isEmpty()){
+            throw new IllegalArgumentException("Userlist have to contains students!");
         }
 
         this.id = id;
@@ -28,7 +32,14 @@ public class Course {
         return id;
     }
 
-    //    TODO: dopisac testy
+    public String getName() {
+        return name;
+    }
+
+    public List<User> getStudents() {
+        return students;
+    }
+
 
     void addStudent(User user) {
         if (!(user.getType() == UserType.STUDENT)) {
