@@ -1,4 +1,5 @@
 public class CourseService {
+
     private final CourseRepository courseRepository;
     private final UserRepository userRepository;
 
@@ -7,7 +8,8 @@ public class CourseService {
         this.userRepository = userRepository;
     }
 
-    void signUpStudentToCourse(int userId, int courseId){
+
+    void signUpStudentToCourse(int userId, int courseId) {
 
         /*
         userrepo.getuser()
@@ -15,8 +17,9 @@ public class CourseService {
         courseRepoo.update()
          */
 
-        Course course;
-        User user;
+        userRepository.getById(userId);
+        courseRepository.getById(courseId);
+
 
 //        TODO: zaimplementowac metode update + testy do CourseService
 

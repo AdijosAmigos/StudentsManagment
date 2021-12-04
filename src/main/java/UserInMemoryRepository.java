@@ -8,6 +8,10 @@ public class UserInMemoryRepository implements UserRepository {
         this.idToUser = idToUser;
     }
 
+    public HashMap<Integer, User> getIdToUser() {
+        return idToUser;
+    }
+
     @Override
     public User getById(int id) {
         return null;

@@ -6,7 +6,7 @@ public class Course {
     private final List<User> students;
 
 
-//  TODO: dopisac walidacje id odraz name (zaimplementowac + testy)
+//  TODO: dopisac walidacje id oraz name (zaimplementowac + testy)
 
 
     public Course(int id, String name, List<User> students) {
