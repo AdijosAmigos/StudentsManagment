@@ -31,15 +31,15 @@ class CourseTest {
                 .hasMessage("Your course name length must be greater than one character");
     }
 
-//    czy ten test ma sens? na poczatku może być nikt nie zapisany do przedmiotu
+    //    czy ten test ma sens? na poczatku może być nikt nie zapisany do przedmiotu
 //    studenci sami moga sie zapisywac na przedmiot w pozniejszym czasie
 //    czy nie lepiej byloby sprawdzic czy lista zawiera obiekty pożądanego typu?
     @Test
-    void should_throw_exception_when_on_userlist_is_empty(){
+    void should_throw_exception_when_on_userlist_is_empty() {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(()-> new Course(1, "math", new ArrayList<User>()))
+        Assertions.assertThatThrownBy(() -> new Course(1, "math", new ArrayList<User>()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Userlist have to contains students!");
     }

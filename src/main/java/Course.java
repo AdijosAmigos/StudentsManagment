@@ -19,7 +19,7 @@ public class Course {
             throw new IllegalArgumentException("Your course name length must be greater than one character");
         }
 
-        if(students.isEmpty()){
+        if (students.isEmpty()) {
             throw new IllegalArgumentException("Userlist have to contains students!");
         }
 
