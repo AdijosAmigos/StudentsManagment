@@ -16,7 +16,7 @@ public class Course {
         }
 
         if (name.length() <= 0) {
-            throw new IllegalArgumentException("Length must be geater then 0!");
+            throw new IllegalArgumentException("Length must be geater than 0!");
         }
 
         this.id = id;
