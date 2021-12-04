@@ -10,9 +10,9 @@ public class User {
 
 
     public User(Integer id, String login, String password, String name, String surname, String PID, UserType type) {
-        this.id = id;
+        this.id = id+1;
         this.login = login;
-        this.password = password;
+        this.password =password;
         this.name = name;
         this.surname = surname;
         this.PID = PID;

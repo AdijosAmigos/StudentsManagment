@@ -1,3 +1,3 @@
 public enum UserType {
-    STUDENT, LECTURER;
+    STUDENT, LECTURER, ADMIN;
 }
