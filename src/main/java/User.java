@@ -1,11 +1,11 @@
 public class User {
 
     private final Integer id;
-    private final String login;
-    private final String password;
-    private final String name;
-    private final String surname;
-    private final String PID;
+    private String login;
+    private String password;
+    private String name;
+    private String surname;
+    private String PID;
     private final UserType type;
 
 
@@ -15,11 +15,11 @@ public class User {
             throw new IllegalArgumentException("You can't create user with id lower than zero!");
         }
 
-        if (login.length() <= 0 || password.length() <=0 || name.length() <=0 || surname.length() <=0 || PID.length() <=0) {
+        if (login.length() <= 0 || password.length() <= 0 || name.length() <= 0 || surname.length() <= 0 || PID.length() <= 0) {
             throw new IllegalArgumentException("Check that your's login, passowrd, name, surename, PID length is lower or eqal to 0!");
         }
 
-        if(getType() == null){
+        if (getType() == null) {
             throw new IllegalArgumentException("User type is null!");
         }
 
@@ -32,12 +32,38 @@ public class User {
         this.type = type;
     }
 
+    // konstruktor bezparametrowy do klasa userInMemoryRepository
+    public User(){
+
+    }
+
+
     public UserType getType() {
         return type;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setPID(String PID) {
+        this.PID = PID;
     }
 
 }

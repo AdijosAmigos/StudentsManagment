@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,26 +15,32 @@ public class UserInMemoryRepository implements UserRepository {
 
     @Override
     public User getById(int id) {
-        return null;
+        return idToUser.get(id);
     }
 
+//    to był moj pomysl na metode
     @Override
     public User update(User user) {
-        return null;
+        user.setLogin();
+        user.setPassword();
+        user.setName();
+        user.setSurname();
+        user.setPID();
+        return user;
     }
 
     @Override
     public User save(User user) {
-        return null;
+        return idToUser.put(user.getId(), user);
     }
 
     @Override
     public User delete(User user) {
-        return null;
+        return idToUser.remove(user.getId());
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return new ArrayList<User>(idToUser.values());
     }
 }
