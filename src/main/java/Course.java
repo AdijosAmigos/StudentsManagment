@@ -23,6 +23,10 @@ public class Course {
             throw new IllegalArgumentException("Userlist have to contains students!");
         }
 
+        if (id > 0 && name.length() > 0) {
+            new Course(id, name, students);
+        }
+
         this.id = id;
         this.name = name;
         this.students = students;

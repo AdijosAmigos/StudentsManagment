@@ -1,10 +1,8 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CourseTest {
@@ -44,4 +42,23 @@ class CourseTest {
                 .hasMessage("Userlist have to contains students!");
     }
 
+//    zeby sprawdzic czy kurs moze byc dodany to musze stworzyc uzytkoniwka, stworzyc liste,
+//    dodac uzytkownika do listy, nastpenie stworzyc kurs gdzie podam w konstruktorze poprawne parametry
+//    podaje poprawne parametry StackOverflowError przepelniony stos dlaczego?
+
+
+    @Test
+    void should_create_new_course_when_correct_parameters() {
+        //given
+        User user = new User(1, "ad", "12345", "adrian", "nowak", "123456789", UserType.STUDENT);
+        List<User> userList = new ArrayList<User>();
+        userList.add(user);
+        //when
+        Course course = new Course(1, "math", userList);
+        //then
+        Assertions.assertThat(course).isInstanceOf(Course.class); // -> tworze course i skoro się utworzyl to musi byc typu Course
+
+    }
+
 }
+
