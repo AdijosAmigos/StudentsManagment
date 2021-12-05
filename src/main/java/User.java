@@ -1,11 +1,11 @@
 public class User {
 
     private final Integer id;
-    private String login;
-    private String password;
-    private String name;
-    private String surname;
-    private String PID;
+    private final String login;
+    private final String password;
+    private final String name;
+    private final String surname;
+    private final String PID;
     private final UserType type;
 
 
@@ -32,11 +32,6 @@ public class User {
         this.type = type;
     }
 
-    // konstruktor bezparametrowy do klasa userInMemoryRepository
-    public User(){
-
-    }
-
 
     public UserType getType() {
         return type;
@@ -44,26 +39,6 @@ public class User {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setPID(String PID) {
-        this.PID = PID;
     }
 
 }

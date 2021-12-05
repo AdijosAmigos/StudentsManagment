@@ -18,7 +18,7 @@ public class CourseInMemoryRepository implements CourseRepository {
 
     @Override
     public Course update(Course course) {
-        return course.setName();
+        return null;
     }
 
     @Override

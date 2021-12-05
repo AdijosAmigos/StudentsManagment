@@ -1,8 +1,10 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CourseTest {
@@ -32,16 +34,16 @@ class CourseTest {
     //    czy ten test ma sens? na poczatku może być nikt nie zapisany do przedmiotu
 //    studenci sami moga sie zapisywac na przedmiot w pozniejszym czasie
 //    czy nie lepiej byloby sprawdzic czy lista zawiera obiekty pożądanego typu?
+
     @Test
-    void should_throw_exception_when_on_userlist_is_empty() {
+    void should_throw_exception_when_on_course_is_empty() {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(() -> new Course(1, "math", new ArrayList<User>()))
+        Assertions.assertThatThrownBy(() -> new Course(1, "math", new ArrayList<>()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Userlist have to contains students!");
     }
-
 //    zeby sprawdzic czy kurs moze byc dodany to musze stworzyc uzytkoniwka, stworzyc liste,
 //    dodac uzytkownika do listy, nastpenie stworzyc kurs gdzie podam w konstruktorze poprawne parametry
 //    podaje poprawne parametry StackOverflowError przepelniony stos dlaczego?

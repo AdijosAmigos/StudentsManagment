@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Course {
     private final int id;
-    private String name;
+    private final String name;
     private final List<User> students;
 
 
@@ -19,7 +19,7 @@ public class Course {
             throw new IllegalArgumentException("Your course name length must be greater than one character");
         }
 
-        if (students.isEmpty()) {
+        if(students.isEmpty()){
             throw new IllegalArgumentException("Userlist have to contains students!");
         }
 
@@ -42,10 +42,6 @@ public class Course {
 
     public List<User> getStudents() {
         return students;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     void addStudent(User user) {

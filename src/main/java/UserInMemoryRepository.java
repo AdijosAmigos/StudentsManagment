@@ -18,15 +18,9 @@ public class UserInMemoryRepository implements UserRepository {
         return idToUser.get(id);
     }
 
-//    to był moj pomysl na metode
     @Override
     public User update(User user) {
-        user.setLogin();
-        user.setPassword();
-        user.setName();
-        user.setSurname();
-        user.setPID();
-        return user;
+      return null;
     }
 
     @Override
