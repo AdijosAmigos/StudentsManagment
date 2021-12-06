@@ -32,7 +32,6 @@ class CourseTest {
     }
 
 
-
 //    blad StackOverlowError zniknal
 //    blad "usertype is null"?
 
@@ -50,11 +49,11 @@ class CourseTest {
     }
 
     @Test
-    void should_create_course_when_correct_parameters(){
+    void should_create_course_when_correct_parameters() {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(()-> new Course(1, "math", new ArrayList<>()))
+        Assertions.assertThatThrownBy(() -> new Course(1, "math", new ArrayList<>()))
                 .isInstanceOf(Object.class);
     }
 

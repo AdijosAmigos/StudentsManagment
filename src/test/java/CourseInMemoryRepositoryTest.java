@@ -65,7 +65,7 @@ class CourseInMemoryRepositoryTest {
         Assertions.assertThat(courseList.size()).isGreaterThan(0);
     }
 
-//    do zrobienia
+    //    do zrobienia
     @Test
     void should_update_course() {
 
