@@ -19,10 +19,6 @@ public class Course {
             throw new IllegalArgumentException("Your course name length must be greater than one character");
         }
 
-        if (id > 0 && name.length() > 0) {
-            new Course(id, name, students);
-        }
-
         this.id = id;
         this.name = name;
         this.students = students;
