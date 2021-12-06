@@ -19,9 +19,6 @@ public class User {
             throw new IllegalArgumentException("Check that your's login, passowrd, name, surename, PID length is lower or eqal to 0!");
         }
 
-        if (getType() == null) {
-            throw new IllegalArgumentException("User type is null!");
-        }
 
         this.id = id;
         this.login = login;
