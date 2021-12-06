@@ -31,23 +31,10 @@ class CourseTest {
                 .hasMessage("Your course name length must be greater than one character");
     }
 
-    //    czy ten test ma sens? na poczatku może być nikt nie zapisany do przedmiotu
-//    studenci sami moga sie zapisywac na przedmiot w pozniejszym czasie
-//    czy nie lepiej byloby sprawdzic czy lista zawiera obiekty pożądanego typu?
 
-    @Test
-    void should_throw_exception_when_on_course_is_empty() {
-        //given
-        //when
-        //then
-        Assertions.assertThatThrownBy(() -> new Course(1, "math", new ArrayList<>()))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Userlist have to contains students!");
-    }
-//    zeby sprawdzic czy kurs moze byc dodany to musze stworzyc uzytkoniwka, stworzyc liste,
-//    dodac uzytkownika do listy, nastpenie stworzyc kurs gdzie podam w konstruktorze poprawne parametry
-//    podaje poprawne parametry StackOverflowError przepelniony stos dlaczego?
 
+//    blad StackOverlowError zniknal
+//    blad "usertype is null"?
 
     @Test
     void should_create_new_course_when_correct_parameters() {
@@ -60,6 +47,15 @@ class CourseTest {
         //then
         Assertions.assertThat(course).isInstanceOf(Course.class); // -> tworze course i skoro się utworzyl to musi byc typu Course
 
+    }
+
+    @Test
+    void should_create_course_when_correct_parameters(){
+        //given
+        //when
+        //then
+        Assertions.assertThatThrownBy(()-> new Course(1, "math", new ArrayList<>()))
+                .isInstanceOf(Object.class);
     }
 
 }

@@ -19,10 +19,6 @@ public class Course {
             throw new IllegalArgumentException("Your course name length must be greater than one character");
         }
 
-        if(students.isEmpty()){
-            throw new IllegalArgumentException("Userlist have to contains students!");
-        }
-
         if (id > 0 && name.length() > 0) {
             new Course(id, name, students);
         }
@@ -43,6 +39,8 @@ public class Course {
     public List<User> getStudents() {
         return students;
     }
+
+
 
     void addStudent(User user) {
         if (!(user.getType() == UserType.STUDENT)) {

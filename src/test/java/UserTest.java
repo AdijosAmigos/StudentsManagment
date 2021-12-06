@@ -13,7 +13,7 @@ class UserTest {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(()-> new User(-1, null, null, null, null, null, null))
+        Assertions.assertThatThrownBy(()-> new User(-1, null, null, null, null, null, UserType.STUDENT))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("You can't create user with id lower than zero!");
     }
@@ -37,5 +37,6 @@ class UserTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("User type is null!");
     }
+
 
 }
