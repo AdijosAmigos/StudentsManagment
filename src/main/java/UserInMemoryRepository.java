@@ -20,7 +20,7 @@ public class UserInMemoryRepository implements UserRepository {
 
     @Override
     public User update(User user) {
-      return null;
+      return user;
     }
 
     @Override

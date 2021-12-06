@@ -18,7 +18,7 @@ public class CourseInMemoryRepository implements CourseRepository {
 
     @Override
     public Course update(Course course) {
-        return null;
+        return course;
     }
 
     @Override
@@ -28,13 +28,13 @@ public class CourseInMemoryRepository implements CourseRepository {
 
     @Override
     public Course delete(Course course) {
-        idToCourse.remove(course.getId());
-        return course;
+        return idToCourse.remove(course.getId());
+
     }
 
     @Override
     public List<Course> findAll() {
-        List<Course> list = new ArrayList<Course>(idToCourse.values());
-        return list;
+        return new ArrayList<Course>(idToCourse.values());
+
     }
 }
