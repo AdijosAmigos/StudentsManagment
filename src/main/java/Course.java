@@ -37,7 +37,6 @@ public class Course {
     }
 
 
-
     void addStudent(User user) {
         if (!(user.getType() == UserType.STUDENT)) {
             throw new IllegalArgumentException();
