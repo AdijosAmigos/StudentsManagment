@@ -18,8 +18,7 @@ public class CourseInMemoryRepository implements CourseRepository {
 
     @Override
     public Course update(Course course) {
-        course.setName(course.getName());
-        course.setStudents(course.getStudents());
+        idToCourse.put(course.getId(), course);
         return course;
     }
 

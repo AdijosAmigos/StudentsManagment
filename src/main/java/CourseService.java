@@ -18,13 +18,13 @@ public class CourseService {
         userrepo.getuser()
         courserepo.getcourse()
         courseRepoo.update()
-
-
          */
 
-        Map<User, Course> studentsToCourse = new HashMap<>();
-        studentsToCourse.put(userRepository.getById(userId), courseRepository.getById(courseId));
+        User user = userRepository.getById(userId);
+        Course course = courseRepository.getById(courseId);
 
+        course.addStudent(user);
+        courseRepository.update(course);
 
 
 //        TODO: zaimplementowac metode update + testy do CourseService
