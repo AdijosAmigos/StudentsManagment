@@ -3,7 +3,7 @@ import java.util.List;
 public class Course {
     private final int id;
     private String name;
-    private final List<User> students;
+    private List<User> students;
 
 
 //  TODO: dopisac walidacje id oraz name (zaimplementowac + testy)
@@ -38,6 +38,10 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setStudents(List<User> students) {
+        this.students = students;
     }
 
     void addStudent(User user) {
