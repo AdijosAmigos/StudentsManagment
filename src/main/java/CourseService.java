@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class CourseService {
 
     private final CourseRepository courseRepository;
@@ -15,10 +18,18 @@ public class CourseService {
         userrepo.getuser()
         courserepo.getcourse()
         courseRepoo.update()
+
+
          */
 
-        userRepository.getById(userId);
-        courseRepository.getById(courseId);
+        Map<User, Course> studentsToCourse = new HashMap<>();
+        studentsToCourse.put(userRepository.getById(userId), courseRepository.getById(courseId));
+
+
+
+
+
+
 
 
 //        TODO: zaimplementowac metode update + testy do CourseService

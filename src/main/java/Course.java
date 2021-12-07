@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Course {
     private final int id;
-    private final String name;
+    private String name;
     private final List<User> students;
 
 
@@ -36,6 +36,9 @@ public class Course {
         return students;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
     void addStudent(User user) {
         if (!(user.getType() == UserType.STUDENT)) {
