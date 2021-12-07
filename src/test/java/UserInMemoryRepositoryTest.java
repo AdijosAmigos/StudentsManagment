@@ -67,7 +67,7 @@ class UserInMemoryRepositoryTest {
         Assertions.assertThat(userList.size()).isGreaterThan(0);
     }
 
-    //    do zrobienia
+    // TODO: should_update_user
     @Test
     void should_update_user() {
 
