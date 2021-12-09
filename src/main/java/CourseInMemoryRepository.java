@@ -16,15 +16,16 @@ public class CourseInMemoryRepository implements CourseRepository {
         return idToCourse.get(id);
     }
 
+    //  moze zostac usunieta
     @Override
     public Course update(Course course) {
-        idToCourse.put(course.getId(), course);
-        return course;
+        return idToCourse.put(course.getId(), course);
     }
 
     @Override
     public Course save(Course course) {
-        return idToCourse.put(course.getId(), course);
+        idToCourse.put(course.getId(), course);
+        return idToCourse.get(course.getId());
     }
 
     @Override

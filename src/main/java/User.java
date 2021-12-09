@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
     private final Integer id;
@@ -7,6 +10,7 @@ public class User {
     private final String surname;
     private final String PID;
     private final UserType type;
+    private final List<Course> courses;
 
 
     public User(Integer id, String login, String password, String name, String surname, String PID, UserType type) {
@@ -27,6 +31,7 @@ public class User {
         this.surname = surname;
         this.PID = PID;
         this.type = type;
+        courses = new ArrayList<>();
     }
 
 
@@ -36,6 +41,10 @@ public class User {
 
     public Integer getId() {
         return id;
+    }
+
+    void subscribeToCourse(Course course){
+        courses.add(course); //przetestowac ta metode
     }
 
 }

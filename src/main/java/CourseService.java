@@ -24,7 +24,9 @@ public class CourseService {
         Course course = courseRepository.getById(courseId);
 
         course.addStudent(user);
-        courseRepository.update(course);
+        courseRepository.save(course);
+        user.subscribeToCourse(course);
+        userRepository.save(user);
 
 
 //        TODO: zaimplementowac metode update + testy do CourseService

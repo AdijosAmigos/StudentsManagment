@@ -13,49 +13,33 @@ class CourseTest {
 
     @Test
     void should_throw_execption_when_id_lower_than_zero() {
-        //given
-        //when
         //then
-        Assertions.assertThatThrownBy(() -> new Course(-1, "math", null))
+        Assertions.assertThatThrownBy(() -> new Course(-1, "math"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Course ID must be greater od equal to 0");
     }
 
     @Test
     void should_throw_exception_when_course_name_length_lower_or_equal_than_zero() {
-        //given
-        //when
         //then
-        Assertions.assertThatThrownBy(() -> new Course(1, "", null))
+        Assertions.assertThatThrownBy(() -> new Course(1, ""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Your course name length must be greater than one character");
     }
 
 
-//    blad StackOverlowError zniknal
-//    blad "usertype is null"?
-
     @Test
     void should_create_new_course_when_correct_parameters() {
-        //given
-        User user = new User(1, "ad", "12345", "adrian", "nowak", "123456789", UserType.STUDENT);
-        List<User> userList = new ArrayList<User>();
-        userList.add(user);
         //when
-        Course course = new Course(1, "math", userList);
+        Course course = new Course(1, "math");
         //then
-        Assertions.assertThat(course).isInstanceOf(Course.class); // -> tworze course i skoro się utworzyl to musi byc typu Course
+        Assertions.assertThat(course.getId()).isEqualTo(Integer.valueOf(1)); // -> tworze course i skoro się utworzyl to musi byc typu Course
+        Assertions.assertThat(course.getName()).isEqualTo("math");
+        Assertions.assertThat(course.getStudents()).isEmpty();
 
     }
 
-    @Test
-    void should_create_course_when_correct_parameters() {
-        //given
-        //when
-        //then
-        Assertions.assertThatThrownBy(() -> new Course(1, "math", new ArrayList<>()))
-                .isInstanceOf(Object.class);
-    }
+//    TODO: test do addStudent musi tworzyc kurs //when add student //then course.getstudents nie moze byc pusta i musi zawierac studetna
 
 }
 

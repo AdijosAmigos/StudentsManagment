@@ -20,8 +20,6 @@ class CourseInMemoryRepositoryTest {
         Course result = courseInMemoryRepository.save(course);
         //then
         Assertions.assertThat(result).isEqualTo(course);
-        boolean areEquals = course.equals(result);
-        Assertions.assertThat(areEquals).isTrue();
     }
 
 
@@ -30,20 +28,19 @@ class CourseInMemoryRepositoryTest {
         //given
         HashMap<Integer, Course> map = new HashMap<Integer, Course>();
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        Course course = new Course(1, "math", null);
+        Course course = new Course(1, "math");
         courseInMemoryRepository.save(course);
         //when
         Course result = courseInMemoryRepository.getById(course.getId());
         //then
         Assertions.assertThat(result).isEqualTo(course);
-        Assertions.assertThat(map.containsKey(course.getId())).isTrue();
     }
 
     @Test
     void should_delete_course() {
         //given
         HashMap<Integer, Course> map = new HashMap<Integer, Course>();
-        Course course = new Course(1, "math", null);
+        Course course = new Course(1, "math");
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
         courseInMemoryRepository.save(course);
         //when
