@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CourseTest {
 
-//    czy tak to ma działać?
 
     @Test
     void should_throw_execption_when_id_lower_than_zero() {
@@ -33,12 +32,22 @@ class CourseTest {
         //when
         Course course = new Course(1, "math");
         //then
-        Assertions.assertThat(course.getId()).isEqualTo(Integer.valueOf(1)); // -> tworze course i skoro się utworzyl to musi byc typu Course
+        Assertions.assertThat(course.getId()).isEqualTo(Integer.valueOf(1));
         Assertions.assertThat(course.getName()).isEqualTo("math");
 
     }
 
 //    TODO: test do addStudent musi tworzyc kurs //when add student //then course.getstudents nie moze byc pusta i musi zawierac studetna
 
+    @Test
+    void should_add_student_to_course() {
+        //given
+        User user = new User(1, "admin", "12345", "adam", "nowak", "1234567", UserType.STUDENT);
+        Course course = new Course(1, "math");
+        //when
+        course.addStudent(user);
+        //then
+        Assertions.assertThat(course.getStudents()).isNotEmpty().contains(user);
+    }
 }
 
