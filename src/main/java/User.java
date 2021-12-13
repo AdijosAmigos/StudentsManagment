@@ -43,6 +43,10 @@ public class User {
         return id;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
     void subscribeToCourse(Course course){
         courses.add(course); //przetestowac ta metode
     }

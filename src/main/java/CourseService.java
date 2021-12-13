@@ -14,7 +14,6 @@ public class CourseService {
 
     void signUpStudentToCourse(int userId, int courseId) {
 
-
         User user = userRepository.getById(userId);
         Course course = courseRepository.getById(courseId);
 

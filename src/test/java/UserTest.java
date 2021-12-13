@@ -40,5 +40,16 @@ class UserTest {
                 .hasMessage("User type is null!");
     }
 
+    @Test
+    void should_subscribe_to_course() {
+        //given
+        Course course = new Course(1, "math");
+        User user = new User(1, "admin", "123435", "adam", "nowak", "123456789", UserType.STUDENT);
+        //when
+        user.subscribeToCourse(course);
+        //then
+        Assertions.assertThat(user.getCourses().isEmpty()).isFalse();
+    }
+
 
 }
