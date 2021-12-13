@@ -46,26 +46,21 @@ class CourseInMemoryRepositoryTest {
         //when
         Course result = courseInMemoryRepository.delete(course);
         //then
-        Assertions.assertThat(map.isEmpty()).isTrue();
+        Assertions.assertThat(result).isEqualTo(course);
     }
 
     @Test
     void should_findAll_courses() {
         //given
         HashMap<Integer, Course> map = new HashMap<Integer, Course>();
-        Course course = new Course(1, "math", null);
+        Course course = new Course(1, "math");
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
         courseInMemoryRepository.save(course);
         //when
         List<Course> courseList = courseInMemoryRepository.findAll();
         //then
-        Assertions.assertThat(courseList.size()).isGreaterThan(0);
+        Assertions.assertThat(courseList).contains(course);
     }
 
-    //    TODO: should_update_course
-    @Test
-    void should_update_course() {
-
-    }
 
 }

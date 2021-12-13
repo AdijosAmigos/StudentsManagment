@@ -35,7 +35,6 @@ class CourseTest {
         //then
         Assertions.assertThat(course.getId()).isEqualTo(Integer.valueOf(1)); // -> tworze course i skoro się utworzyl to musi byc typu Course
         Assertions.assertThat(course.getName()).isEqualTo("math");
-        Assertions.assertThat(course.getStudents()).isEmpty();
 
     }
 

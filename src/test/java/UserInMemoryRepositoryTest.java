@@ -18,7 +18,7 @@ class UserInMemoryRepositoryTest {
         //when
         User result = userInMemoryRepository.save(user);
         //then
-
+        Assertions.assertThat(result).isEqualTo(user);
 
     }
 
@@ -46,12 +46,9 @@ class UserInMemoryRepositoryTest {
         //when
         User result = userInMemoryRepository.delete(user);
         //then
-        Assertions.assertThat(map.isEmpty()).isTrue();
+        Assertions.assertThat(result).isEqualTo(user);
     }
 
-//    czy napewno tutaj sprawdzam czy znalazlo uzytkownika w liscie?
-//    tak naprawde sprawdzam czy rozmiar listy > 0 czyli czy user znajduje sie w liscie czyli dzostal tam zapisany
-//    analogicznie w CourseInMemoryRepository
 
     @Test
     void should_finall_users() {
@@ -63,13 +60,7 @@ class UserInMemoryRepositoryTest {
         //when
         List<User> userList = userInMemoryRepository.findAll();
         //then
-        Assertions.assertThat(userList.size()).isGreaterThan(0);
-    }
-
-    // TODO: should_update_user
-    @Test
-    void should_update_user() {
-
+        Assertions.assertThat(userList).contains(user);
     }
 
 }

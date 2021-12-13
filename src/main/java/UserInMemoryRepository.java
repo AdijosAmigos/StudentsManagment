@@ -18,15 +18,19 @@ public class UserInMemoryRepository implements UserRepository {
         return idToUser.get(id);
     }
 
+    /*
     @Override
     public User update(User user) {
         return idToUser.put(user.getId(), user);
     }
+     */
 
     @Override
     public User save(User user) {
-        return idToUser.put(user.getId(), user);
+        idToUser.put(user.getId(), user);
+        return idToUser.get(user.getId());
     }
+
 
     @Override
     public User delete(User user) {

@@ -18,7 +18,7 @@ class CourseServiceTest {
         CourseRepository courseInMemoryReposiotory = new CourseInMemoryRepository(idToCourse);
         course.addStudent(user);
         //when
-        Course result = courseInMemoryReposiotory.update(course);
+        Course result = courseInMemoryReposiotory.save(course);
         //then
         Assertions.assertThat(result).isEqualTo(course);
     }

@@ -3,7 +3,7 @@ import java.util.List;
 public interface UserRepository {
     User getById(int id);
 
-    User update(User user);
+//    User update(User user); -> nie potrzebna robi to samo co save()
 
     User save(User user);
 

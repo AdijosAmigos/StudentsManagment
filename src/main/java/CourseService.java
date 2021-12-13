@@ -14,11 +14,6 @@ public class CourseService {
 
     void signUpStudentToCourse(int userId, int courseId) {
 
-        /*
-        userrepo.getuser()
-        courserepo.getcourse()
-        courseRepoo.update()
-         */
 
         User user = userRepository.getById(userId);
         Course course = courseRepository.getById(courseId);
@@ -28,8 +23,6 @@ public class CourseService {
         user.subscribeToCourse(course);
         userRepository.save(user);
 
-
-//        TODO: zaimplementowac metode update + testy do CourseService
 
     }
 
