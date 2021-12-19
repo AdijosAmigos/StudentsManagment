@@ -5,6 +5,7 @@ public class Course {
     private final int id;
     private final String name;
     private final List<User> students;
+//    private final List<Integer> grades;
 
 
     public Course(int id, String name) {

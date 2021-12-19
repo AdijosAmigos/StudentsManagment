@@ -11,6 +11,7 @@ public class User {
     private final String PID;
     private final UserType type;
     private final List<Course> courses;
+    private final List<Grade> grades;
 
 
     public User(Integer id, String login, String password, String name, String surname, String PID, UserType type) {
@@ -32,6 +33,7 @@ public class User {
         this.PID = PID;
         this.type = type;
         courses = new ArrayList<>();
+        grades = new Grade();
     }
 
 
