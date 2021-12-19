@@ -23,6 +23,8 @@ class CourseServiceTest {
         //when
         courseService.signUpStudentToCourse(user.getId(), course.getId());
         //then
+        Assertions.assertThat(userInMemoryRepository.findAll()).isNotEmpty();
+        Assertions.assertThat(courseInMemoryRepository.findAll()).isNotEmpty();
 
     }
 
