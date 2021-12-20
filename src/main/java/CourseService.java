@@ -12,7 +12,7 @@ public class CourseService {
     }
 
 
-    void signUpStudentToCourse(int userId, int courseId) {
+    void signUpStudentToCourse(int userId, Long courseId) {
 
         User user = userRepository.getById(userId);
         Course course = courseRepository.getById(courseId);
@@ -22,6 +22,11 @@ public class CourseService {
         user.subscribeToCourse(course);
         userRepository.save(user);
 
+    }
+
+    //TODO: napisać metode w courseService rezultat uczen bedzie miał ocene z danego kursu
+
+    void assignGradeToStudent(int userId, Long courseId, Grade grade){
 
     }
 

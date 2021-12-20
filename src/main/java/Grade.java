@@ -1,24 +1,24 @@
 public class Grade {
-    private final String grade;
+    private final GradeValue gradeValue;
     private final String description;
 
 
-    public Grade(String grade) {
-        this(grade, new String());
+    public Grade(GradeValue gradeValue) {
+        this(gradeValue, "");
     }
 
-    public Grade(String grade, String description) {
+    public Grade(GradeValue gradeValue, String description) {
 
-        if(grade == null || grade.isBlank()){
-            throw new IllegalArgumentException("Grade can not be null or blank");
+        if(gradeValue == null){
+            throw new IllegalArgumentException("Grade can not be null");
         }
 
-        this.grade = grade;
+        this.gradeValue = gradeValue;
         this.description = description;
     }
 
-    public String getGrade() {
-        return grade;
+    public GradeValue getGrade() {
+        return gradeValue;
     }
 
     public String getDescription() {

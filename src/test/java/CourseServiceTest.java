@@ -11,11 +11,11 @@ class CourseServiceTest {
     @Test
     void should_sign_up_student_to_course() {
         //given
-        Course course = new Course(1, "math");
+        Course course = new Course(1L, "math");
         User user = new User(1, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
-        HashMap<Integer, Course> map = new HashMap<Integer, Course>();
+        HashMap<Long, Course> map = new HashMap<>();
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        HashMap<Integer, User> map1 = new HashMap<Integer, User>();
+        HashMap<Integer, User> map1 = new HashMap<>();
         UserRepository userInMemoryRepository = new UserInMemoryRepository(map1);
         courseInMemoryRepository.save(course);
         userInMemoryRepository.save(user);
@@ -23,9 +23,11 @@ class CourseServiceTest {
         //when
         courseService.signUpStudentToCourse(user.getId(), course.getId());
         //then
-        Assertions.assertThat(userInMemoryRepository.findAll()).isNotEmpty();
-        Assertions.assertThat(courseInMemoryRepository.findAll()).isNotEmpty();
-
+        User updatedUser = userInMemoryRepository.getById(user.getId());
+        Course updatedCourse = courseInMemoryRepository.getById(course.getId());
+        Assertions.assertThat(updatedUser.getCourses()).contains(course.getId());
+        Assertions.assertThat(updatedCourse.getStudents()).contains(user);
+        Assertions.assertThat(updatedUser.gradesByCourseId(course.getId())).isEmpty();
     }
 
 }

@@ -2,19 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
-    private final int id;
+    private final Long id;
     private final String name;
     private final List<User> students;
-//    private final List<Integer> grades;
+//TODO: linia 7 i wszystko co związane z lnia 7 przerobić z User na UserIds analogicznie jak z Long w courses
 
-
-    public Course(int id, String name) {
+    public Course(Long id, String name) {
 
         this(id, name, new ArrayList<>());
 
     }
 
-    public Course(int id, String name, List<User> students) {
+    public Course(Long id, String name, List<User> students) {
 
         if (id < 0) {
             throw new IllegalArgumentException("Course ID must be greater od equal to 0");
@@ -29,7 +28,7 @@ public class Course {
         this.students = students;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

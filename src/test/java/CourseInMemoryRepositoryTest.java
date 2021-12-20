@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,8 +15,8 @@ class CourseInMemoryRepositoryTest {
     @Test
     void should_save_course() {
         //given
-        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(new HashMap<Integer, Course>());
-        Course course = new Course(1, "math", new ArrayList<>());
+        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(new HashMap<Long, Course>());
+        Course course = new Course(1L, "math", new ArrayList<>());
         //when
         Course result = courseInMemoryRepository.save(course);
         //then
@@ -26,9 +27,9 @@ class CourseInMemoryRepositoryTest {
     @Test
     void should_return_course_by_id() {
         //given
-        HashMap<Integer, Course> map = new HashMap<Integer, Course>();
+        HashMap<Long, Course> map = new HashMap<>();
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        Course course = new Course(1, "math");
+        Course course = new Course(1L, "math");
         courseInMemoryRepository.save(course);
         //when
         Course result = courseInMemoryRepository.getById(course.getId());
@@ -39,8 +40,8 @@ class CourseInMemoryRepositoryTest {
     @Test
     void should_delete_course() {
         //given
-        HashMap<Integer, Course> map = new HashMap<Integer, Course>();
-        Course course = new Course(1, "math");
+        HashMap<Long, Course> map = new HashMap<>();
+        Course course = new Course(1L, "math");
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
         courseInMemoryRepository.save(course);
         //when
@@ -52,8 +53,8 @@ class CourseInMemoryRepositoryTest {
     @Test
     void should_findAll_courses() {
         //given
-        HashMap<Integer, Course> map = new HashMap<Integer, Course>();
-        Course course = new Course(1, "math");
+        Map<Long, Course> map = new HashMap<>();
+        Course course = new Course(1L, "math");
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
         courseInMemoryRepository.save(course);
         //when
@@ -62,5 +63,6 @@ class CourseInMemoryRepositoryTest {
         Assertions.assertThat(courseList).contains(course);
     }
 
+    //TODO: zmienic typ na interfejs MAP oraz poprawić błędy w typach mapy "Long" zamiast Integer
 
 }

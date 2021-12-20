@@ -5,14 +5,14 @@ import java.util.Map;
 
 public class CourseInMemoryRepository implements CourseRepository {
 
-    private final HashMap<Integer, Course> idToCourse;
+    private final Map<Long, Course> idToCourse;
 
-    public CourseInMemoryRepository(HashMap<Integer, Course> idToCourse) {
+    public CourseInMemoryRepository(Map<Long, Course> idToCourse) {
         this.idToCourse = idToCourse;
     }
 
     @Override
-    public Course getById(int id) {
+    public Course getById(Long id) {
         return idToCourse.get(id);
     }
 

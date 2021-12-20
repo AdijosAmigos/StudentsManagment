@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
 
@@ -10,8 +12,8 @@ public class User {
     private final String surname;
     private final String PID;
     private final UserType type;
-    private final List<Course> courses;
-    private final List<Grade> grades;
+    private final List<Long> courseIds;
+    private final Map<Long, List<Grade>> courseIdToGrades;
 
 
     public User(Integer id, String login, String password, String name, String surname, String PID, UserType type) {
@@ -32,8 +34,9 @@ public class User {
         this.surname = surname;
         this.PID = PID;
         this.type = type;
-        courses = new ArrayList<>();
-        grades = new Grade();
+        courseIds = new ArrayList<>();
+        courseIdToGrades = new HashMap<>();
+
     }
 
 
@@ -45,12 +48,18 @@ public class User {
         return id;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<Grade> gradesByCourseId(Long courseId) {
+        return courseIdToGrades.get(courseId);
     }
 
-    void subscribeToCourse(Course course){
-        courses.add(course); //przetestowac ta metode
+    public List<Long> getCourses() {
+        return courseIds;
     }
+
+    void subscribeToCourse(Course course) {
+        courseIds.add(course.getId());
+        courseIdToGrades.put(course.getId(), new ArrayList<>());
+    }
+
 
 }

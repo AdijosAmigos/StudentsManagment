@@ -13,7 +13,7 @@ class CourseTest {
     @Test
     void should_throw_execption_when_id_lower_than_zero() {
         //then
-        Assertions.assertThatThrownBy(() -> new Course(-1, "math"))
+        Assertions.assertThatThrownBy(() -> new Course(-1L, "math"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Course ID must be greater od equal to 0");
     }
@@ -21,7 +21,7 @@ class CourseTest {
     @Test
     void should_throw_exception_when_course_name_length_lower_or_equal_than_zero() {
         //then
-        Assertions.assertThatThrownBy(() -> new Course(1, ""))
+        Assertions.assertThatThrownBy(() -> new Course(1L, ""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Your course name length must be greater than one character");
     }
@@ -30,7 +30,7 @@ class CourseTest {
     @Test
     void should_create_new_course_when_correct_parameters() {
         //when
-        Course course = new Course(1, "math");
+        Course course = new Course(1L, "math");
         //then
         Assertions.assertThat(course.getId()).isEqualTo(Integer.valueOf(1));
         Assertions.assertThat(course.getName()).isEqualTo("math");
@@ -43,7 +43,7 @@ class CourseTest {
     void should_add_student_to_course() {
         //given
         User user = new User(1, "admin", "12345", "adam", "nowak", "1234567", UserType.STUDENT);
-        Course course = new Course(1, "math");
+        Course course = new Course(1L, "math");
         //when
         course.addStudent(user);
         //then

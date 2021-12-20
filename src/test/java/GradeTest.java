@@ -6,9 +6,9 @@ class GradeTest {
     @Test
     void should_create_grade_when_correct_parameters() {
         //then
-        Assertions.assertThatThrownBy(() -> new Grade("", "math test"))
+        Assertions.assertThatThrownBy(() -> new Grade(null, "math test"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Grade can not be null or blank");
+                .hasMessage("Grade can not be null");
     }
 
 

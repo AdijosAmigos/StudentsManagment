@@ -2,7 +2,7 @@ import java.util.List;
 
 public interface CourseRepository {
 
-    Course getById(int id);
+    Course getById(Long id);
 
 //    Course update(Course course); -> nie potrzebna robi to samo co save()
 
