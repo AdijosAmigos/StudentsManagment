@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CourseService {
@@ -24,9 +25,16 @@ public class CourseService {
 
     }
 
-    //TODO: napisać metode w courseService rezultat uczen bedzie miał ocene z danego kursu
+    //TODO: napisać metode w courseService rezultat uczen bedzie miał ocene z danego kursu ->DONE?
 
-    void assignGradeToStudent(int userId, Long courseId, Grade grade){
+    void assignGradeToStudent(Long userId, Long courseId, Grade grade){
+
+        User user = userRepository.getById(userId);
+        List<Grade> grades = user.gradesByCourseId(courseId);
+
+        signUpStudentToCourse(userId, courseId);
+        grades.add(grade);
+
 
     }
 
