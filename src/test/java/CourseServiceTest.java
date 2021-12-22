@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,9 +15,9 @@ class CourseServiceTest {
         //given
         Course course = new Course(1L, "math");
         User user = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
-        HashMap<Long, Course> map = new HashMap<>();
+        Map<Long, Course> map = new HashMap<>();
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        HashMap<Long, User> map1 = new HashMap<>();
+        Map<Long, User> map1 = new HashMap<>();
         UserRepository userInMemoryRepository = new UserInMemoryRepository(map1);
         courseInMemoryRepository.save(course);
         userInMemoryRepository.save(user);
@@ -31,8 +33,22 @@ class CourseServiceTest {
     }
 
     @Test
-    void should_assign_grade_to_students_course(){
-
+    void should_assign_grade_to_student_course(){
+        //given
+        Course course = new Course(1L, "math");
+        User user = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
+        Grade grade = new Grade(GradeValue.ONE);
+        Map<Long, Course> map = new HashMap<>();
+        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
+        Map<Long, User> map1 = new HashMap<>();
+        UserRepository userInMemoryRepository = new UserInMemoryRepository(map1);
+        courseInMemoryRepository.save(course);
+        userInMemoryRepository.save(user);
+        CourseService courseService = new CourseService(courseInMemoryRepository, userInMemoryRepository);
+        //when
+        courseService.assignGradeToStudent(user.getId(), course.getId(), grade);
+        //then
+        Assertions.assertThat(user.gradesByCourseId(course.getId())).contains(grade);
     }
 
 }
