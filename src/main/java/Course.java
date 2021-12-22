@@ -5,7 +5,7 @@ public class Course {
     private final Long id;
     private final String name;
     private final List<User> students;
-//TODO: linia 7 i wszystko co związane z lnia 7 przerobić z User na UserIds analogicznie jak z Long w courses
+//TODO: linia 7 i wszystko co związane z lnia 7 przerobić z User na UserIds analogicznie jak z Long w courses ->DONE
 
     public Course(Long id, String name) {
 
