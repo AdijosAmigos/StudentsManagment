@@ -27,14 +27,13 @@ public class CourseService {
 
     //TODO: napisać metode w courseService rezultat uczen bedzie miał ocene z danego kursu ->DONE?
 
-    void assignGradeToStudent(Long userId, Long courseId, Grade grade){
+    void assignGradeToStudent(Long userId, Long courseId, Grade grade) {
 
         User user = userRepository.getById(userId);
-        List<Grade> grades = user.gradesByCourseId(courseId);
-
         signUpStudentToCourse(userId, courseId);
-        grades.add(grade);
 
+        List<Grade> grades = user.gradesByCourseId(courseId);
+        grades.add(grade);
 
     }
 

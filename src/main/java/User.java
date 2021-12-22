@@ -61,5 +61,4 @@ public class User {
         courseIdToGrades.put(course.getId(), new ArrayList<>());
     }
 
-
 }
