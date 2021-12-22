@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class User {
 
-    private final Integer id;
+    private final Long id;
     private final String login;
     private final String password;
     private final String name;
@@ -16,7 +16,7 @@ public class User {
     private final Map<Long, List<Grade>> courseIdToGrades;
 
 
-    public User(Integer id, String login, String password, String name, String surname, String PID, UserType type) {
+    public User(Long id, String login, String password, String name, String surname, String PID, UserType type) {
 
         if (id < 0) {
             throw new IllegalArgumentException("You can't create user with id lower than zero!");
@@ -44,7 +44,7 @@ public class User {
         return type;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

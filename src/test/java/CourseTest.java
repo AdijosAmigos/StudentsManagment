@@ -42,7 +42,7 @@ class CourseTest {
     @Test
     void should_add_student_to_course() {
         //given
-        User user = new User(1, "admin", "12345", "adam", "nowak", "1234567", UserType.STUDENT);
+        User user = new User(1L, "admin", "12345", "adam", "nowak", "1234567", UserType.STUDENT);
         Course course = new Course(1L, "math");
         //when
         course.addStudent(user);

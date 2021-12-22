@@ -8,13 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserInMemoryRepositoryTest {
 
-//   TODO: should_save_user -> blad to poprawy "expecting <null>"
-
     @Test
     void should_save_user() {
         //given
-        UserRepository userInMemoryRepository = new UserInMemoryRepository(new HashMap<Integer, User>());
-        User user = new User(1, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
+        UserRepository userInMemoryRepository = new UserInMemoryRepository(new HashMap<Long, User>());
+        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
         //when
         User result = userInMemoryRepository.save(user);
         //then
@@ -25,8 +23,8 @@ class UserInMemoryRepositoryTest {
     @Test
     void should_return_user_by_id() {
         //given
-        HashMap<Integer, User> map = new HashMap<Integer, User>();
-        User user = new User(1, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
+        HashMap<Long, User> map = new HashMap<>();
+        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
         UserRepository userInMemoryRepository = new UserInMemoryRepository(map);
         userInMemoryRepository.save(user);
         //when
@@ -39,8 +37,8 @@ class UserInMemoryRepositoryTest {
     @Test
     void should_delete_user() {
         //given
-        HashMap<Integer, User> map = new HashMap<Integer, User>();
-        User user = new User(1, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
+        HashMap<Long, User> map = new HashMap<>();
+        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
         UserRepository userInMemoryRepository = new UserInMemoryRepository(map);
         userInMemoryRepository.save(user);
         //when
@@ -53,8 +51,8 @@ class UserInMemoryRepositoryTest {
     @Test
     void should_finall_users() {
         //given
-        HashMap<Integer, User> map = new HashMap<Integer, User>();
-        User user = new User(1, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
+        HashMap<Long, User> map = new HashMap<>();
+        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
         UserRepository userInMemoryRepository = new UserInMemoryRepository(map);
         userInMemoryRepository.save(user);
         //when

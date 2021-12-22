@@ -15,7 +15,7 @@ class UserTest {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(() -> new User(-1, null, null, null, null, null, UserType.STUDENT))
+        Assertions.assertThatThrownBy(() -> new User(-1L, null, null, null, null, null, UserType.STUDENT))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("You can't create user with id lower than zero!");
     }
@@ -25,7 +25,7 @@ class UserTest {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(() -> new User(1, "", "", "", "", "", UserType.STUDENT))
+        Assertions.assertThatThrownBy(() -> new User(1L, "", "", "", "", "", UserType.STUDENT))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Check that your's login, passowrd, name, surename, PID length is lower or eqal to 0!");
     }
@@ -35,7 +35,7 @@ class UserTest {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(() -> new User(1, "adi", "123", "adrian", "nowak", "123456789", null))
+        Assertions.assertThatThrownBy(() -> new User(1L, "adi", "123", "adrian", "nowak", "123456789", null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("User type is null!");
     }
@@ -44,7 +44,7 @@ class UserTest {
     void should_subscribe_to_course() {
         //given
         Course course = new Course(1L, "math");
-        User user = new User(1, "admin", "123435", "adam", "nowak", "123456789", UserType.STUDENT);
+        User user = new User(1L, "admin", "123435", "adam", "nowak", "123456789", UserType.STUDENT);
         //when
         user.subscribeToCourse(course);
         //then

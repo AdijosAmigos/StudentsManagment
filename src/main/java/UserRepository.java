@@ -1,9 +1,7 @@
 import java.util.List;
 
 public interface UserRepository {
-    User getById(int id);
-
-//    User update(User user); -> nie potrzebna robi to samo co save()
+    User getById(Long id);
 
     User save(User user);
 

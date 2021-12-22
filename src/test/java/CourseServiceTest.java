@@ -12,10 +12,10 @@ class CourseServiceTest {
     void should_sign_up_student_to_course() {
         //given
         Course course = new Course(1L, "math");
-        User user = new User(1, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
+        User user = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
         HashMap<Long, Course> map = new HashMap<>();
         CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        HashMap<Integer, User> map1 = new HashMap<>();
+        HashMap<Long, User> map1 = new HashMap<>();
         UserRepository userInMemoryRepository = new UserInMemoryRepository(map1);
         courseInMemoryRepository.save(course);
         userInMemoryRepository.save(user);

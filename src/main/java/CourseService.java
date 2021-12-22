@@ -12,7 +12,7 @@ public class CourseService {
     }
 
 
-    void signUpStudentToCourse(int userId, Long courseId) {
+    void signUpStudentToCourse(Long userId, Long courseId) {
 
         User user = userRepository.getById(userId);
         Course course = courseRepository.getById(courseId);
