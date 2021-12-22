@@ -32,7 +32,7 @@ class CourseTest {
         //when
         Course course = new Course(1L, "math");
         //then
-        Assertions.assertThat(course.getId()).isEqualTo(Integer.valueOf(1));
+        Assertions.assertThat(course.getId()).isEqualTo(Long.valueOf(1));
         Assertions.assertThat(course.getName()).isEqualTo("math");
 
     }
