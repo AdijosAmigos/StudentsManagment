@@ -30,4 +30,9 @@ class CourseServiceTest {
         Assertions.assertThat(updatedUser.gradesByCourseId(course.getId())).isEmpty();
     }
 
+    @Test
+    void should_assign_grade_to_students_course(){
+
+    }
+
 }

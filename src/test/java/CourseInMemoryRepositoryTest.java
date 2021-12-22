@@ -63,6 +63,6 @@ class CourseInMemoryRepositoryTest {
         Assertions.assertThat(courseList).contains(course);
     }
 
-    //TODO: zmienic typ na interfejs MAP oraz poprawić błędy w typach mapy "Long" zamiast Integer
+    //TODO: zmienic typ na interfejs MAP oraz poprawić błędy w typach mapy "Long" zamiast Integer -> DONE
 
 }

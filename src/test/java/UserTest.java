@@ -49,7 +49,8 @@ class UserTest {
         user.subscribeToCourse(course);
         //then
         Assertions.assertThat(user.getCourses().isEmpty()).isFalse();
-        //TODO: sprawdzić że lista ocen jest pusta pod kluczem courseId
+        Assertions.assertThat(user.gradesByCourseId(course.getId())).isEmpty();
+        //TODO: sprawdzić że lista ocen jest pusta pod kluczem courseId -> DONE
     }
 
 

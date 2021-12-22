@@ -37,7 +37,7 @@ class CourseTest {
 
     }
 
-//    TODO: test do addStudent musi tworzyc kurs //when add student //then course.getstudents nie moze byc pusta i musi zawierac studetna
+
 
     @Test
     void should_add_student_to_course() {
