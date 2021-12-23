@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Course {
     private final Long id;
     private final String name;
     private final List<User> students;
-//TODO: linia 7 i wszystko co związane z lnia 7 przerobić z User na UserIds analogicznie jak z Long w courses ->DONE
+//TODO: linia 7 i wszystko co związane z lnia 7 przerobić z User na UserIds analogicznie jak z Long w courses -> do zbierania
 
     public Course(Long id, String name) {
 
@@ -46,5 +47,27 @@ public class Course {
         }
         students.add(user);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return Objects.equals(id, course.id) && Objects.equals(name, course.name) && Objects.equals(students, course.students);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, students);
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", students=" + students +
+                '}';
     }
 }

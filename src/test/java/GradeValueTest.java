@@ -18,4 +18,5 @@ class GradeValueTest {
         //TODO: sprawdzić analogicznie kolejne oceny -> DONE
     }
 
+
 }

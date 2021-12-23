@@ -13,7 +13,7 @@ public class CourseService {
     }
 
 
-    void signUpStudentToCourse(Long userId, Long courseId) {
+    User signUpStudentToCourse(Long userId, Long courseId) {
 
         User user = userRepository.getById(userId);
         Course course = courseRepository.getById(courseId);
@@ -21,7 +21,7 @@ public class CourseService {
         course.addStudent(user);
         courseRepository.save(course);
         user.subscribeToCourse(course);
-        userRepository.save(user);
+        return userRepository.save(user);
 
     }
 
@@ -30,10 +30,11 @@ public class CourseService {
     void assignGradeToStudent(Long userId, Long courseId, Grade grade) {
 
         User user = userRepository.getById(userId);
-        signUpStudentToCourse(userId, courseId);
+        signUpStudentToCourse(userId, courseId); // -> nie zapisuje go na kurs tylko sprawdzam czy jest juz zapisany i jezeli nie jest to wyrzacam wyjkatek
 
-        List<Grade> grades = user.gradesByCourseId(courseId);
-        grades.add(grade);
+        user.addGrade(courseId, grade);
+
+        userRepository.save(user);
 
     }
 

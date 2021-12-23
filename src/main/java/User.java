@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class User {
 
@@ -61,4 +58,37 @@ public class User {
         courseIdToGrades.put(course.getId(), new ArrayList<>());
     }
 
+    void addGrade(Long courseId, Grade grade) {
+        List<Grade> gradeList = courseIdToGrades.get(courseId);
+        gradeList.add(grade);
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(PID, user.PID) && type == user.type && Objects.equals(courseIds, user.courseIds) && Objects.equals(courseIdToGrades, user.courseIdToGrades);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password, name, surname, PID, type, courseIds, courseIdToGrades);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", PID='" + PID + '\'' +
+                ", type=" + type +
+                ", courseIds=" + courseIds +
+                ", courseIdToGrades=" + courseIdToGrades +
+                '}';
+    }
 }
