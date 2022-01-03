@@ -35,6 +35,7 @@ class CourseServiceTest {
         Assertions.assertThat(updatedUser.gradesByCourseId(course.getId())).isEmpty();
     }
 
+    /*
     @Test
     void should_assign_grade_to_student_course() {
         //given
@@ -52,6 +53,15 @@ class CourseServiceTest {
         courseService.assignGradeToStudent(user.getId(), course.getId(), grade);
         //then
         Assertions.assertThat(userInMemoryRepository.getById(user.getId()).gradesByCourseId(course.getId())).containsExactly(grade);
+
+    }
+    */
+
+
+    @Test
+    void should_assign_grade_to_student_course() {
+        //given
+
 
     }
 
