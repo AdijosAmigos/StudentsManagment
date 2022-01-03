@@ -13,8 +13,10 @@ import static org.mockito.Mockito.verify;
 
 class CourseServiceTest {
 
+    /*
     @Test
     void should_sign_up_student_to_course() {
+
         //given
         Course course = new Course(1L, "math");
         User user = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
@@ -34,6 +36,7 @@ class CourseServiceTest {
         Assertions.assertThat(updatedCourse.getStudents()).contains(user.getId());
         Assertions.assertThat(updatedUser.gradesByCourseId(course.getId())).isEmpty();
     }
+    */
 
     /*
     @Test
@@ -57,11 +60,40 @@ class CourseServiceTest {
     }
     */
 
-
+    // blad nie zgadzaja sie parametry usera
     @Test
     void should_assign_grade_to_student_course() {
         //given
+        Course course = new Course(1L, "math");
+        Course expectedCourse = new Course(1L, "math");
+        Grade grade = new Grade(GradeValue.FIVE);
+        Grade expectedGrade = new Grade(GradeValue.FIVE);
+        User user = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
+        User expectedUser = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
 
+        expectedUser.subscribeToCourse(expectedCourse);
+        expectedCourse.addStudent(expectedUser);
+
+        CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
+        UserRepository userRepository = Mockito.mock(UserRepository.class);
+
+        given(courseRepository.save(expectedCourse)).willReturn(expectedCourse);
+        given(userRepository.save(expectedUser)).willReturn(expectedUser);
+
+        CourseService courseService = new CourseService(courseRepository, userRepository);
+
+        given(courseRepository.getById(course.getId())).willReturn(course);
+        given(userRepository.getById(user.getId())).willReturn(user);
+
+        User result = courseService.signUpStudentToCourse(user.getId(), course.getId());
+
+        //when
+        courseService.assignGradeToStudent(expectedUser.getId(), expectedCourse.getId(), expectedGrade);
+
+        //then
+        verify(userRepository).save(expectedUser);
+        verify(courseRepository).save(expectedCourse);
+        Assertions.assertThat(result.gradesByCourseId(course.getId())).containsExactly(grade);
 
     }
 
