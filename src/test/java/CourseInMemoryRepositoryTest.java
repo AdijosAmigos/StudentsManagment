@@ -38,11 +38,11 @@ class CourseInMemoryRepositoryTest {
         //when
         Course result = courseRepository.save(expectedCourse);
         //then
-        verify(courseRepository).save(course);
-        Assertions.assertThat(result.getId()).isEqualTo(course.getId());
+        verify(courseRepository).save(expectedCourse);
+        Assertions.assertThat(result).isEqualTo(course);
 
     }
-
+/*
     @Test
     void should_return_course_by_id() {
         //given
@@ -54,6 +54,26 @@ class CourseInMemoryRepositoryTest {
         Course result = courseInMemoryRepository.getById(course.getId());
         //then
         Assertions.assertThat(result).isEqualTo(course);
+    }
+
+ */
+
+    @Test
+    void should_return_course_by_id() {
+        //given
+        Course course = new Course(1L, "math");
+        Course expectedCourse = new Course(1L, "math");
+
+        CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
+
+        given(courseRepository.getById(expectedCourse.getId())).willReturn(expectedCourse);
+
+        //when
+        Course result = courseRepository.getById(course.getId());
+
+        //then
+        verify(courseRepository).getById(expectedCourse.getId());
+        Assertions.assertThat(result.getId()).isEqualTo(course.getId());
     }
 
     @Test
