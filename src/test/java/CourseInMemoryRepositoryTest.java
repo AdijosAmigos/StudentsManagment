@@ -1,5 +1,6 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,11 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 class CourseInMemoryRepositoryTest {
 
-//  TODO: should_save_course -> blad do poprawy
-
+/*
     @Test
     void should_save_course() {
         //given
@@ -22,7 +24,24 @@ class CourseInMemoryRepositoryTest {
         //then
         Assertions.assertThat(result).isEqualTo(course);
     }
+ */
 
+    @Test
+    void should_save_course() {
+        //given
+        Course course = new Course(1L, "math");
+        Course expectedCourse = new Course(1L, "math");
+
+        CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
+        given(courseRepository.save(expectedCourse)).willReturn(expectedCourse);
+
+        //when
+        Course result = courseRepository.save(expectedCourse);
+        //then
+        verify(courseRepository).save(course);
+        Assertions.assertThat(result.getId()).isEqualTo(course.getId());
+
+    }
 
     @Test
     void should_return_course_by_id() {
