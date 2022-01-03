@@ -93,6 +93,19 @@ class CourseInMemoryRepositoryTest {
 
     @Test
     void should_delete_course() {
+        //given
+        Course course = new Course(1L, "math");
+        Course expectedCourse = new Course(1L, "math");
+
+        CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
+        given(courseRepository.delete(expectedCourse)).willReturn(expectedCourse);
+
+        //when
+        Course result = courseRepository.delete(expectedCourse);
+
+        //then
+        verify(courseRepository).delete(course);
+        Assertions.assertThat(result).isEqualTo(course);
 
     }
 
@@ -109,6 +122,5 @@ class CourseInMemoryRepositoryTest {
         Assertions.assertThat(courseList).contains(course);
     }
 
-    //TODO: zmienic typ na interfejs MAP oraz poprawić błędy w typach mapy "Long" zamiast Integer -> DONE
 
 }
