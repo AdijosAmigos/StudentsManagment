@@ -15,7 +15,7 @@ class CourseInMemoryRepositoryTest {
     @Test
     void should_save_course() {
         //given
-        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(new HashMap<Long, Course>());
+        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(new HashMap<>());
         Course course = new Course(1L, "math", new ArrayList<>());
         //when
         Course result = courseInMemoryRepository.save(course);

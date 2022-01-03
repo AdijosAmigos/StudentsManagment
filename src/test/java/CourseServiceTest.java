@@ -31,7 +31,7 @@ class CourseServiceTest {
         User updatedUser = userInMemoryRepository.getById(user.getId());
         Course updatedCourse = courseInMemoryRepository.getById(course.getId());
         Assertions.assertThat(updatedUser.getCourses()).contains(course.getId());
-        Assertions.assertThat(updatedCourse.getStudents()).contains(user);
+        Assertions.assertThat(updatedCourse.getStudents()).contains(user.getId());
         Assertions.assertThat(updatedUser.gradesByCourseId(course.getId())).isEmpty();
     }
 

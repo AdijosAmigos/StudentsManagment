@@ -23,7 +23,6 @@ public class User {
             throw new IllegalArgumentException("Check that your's login, passowrd, name, surename, PID length is lower or eqal to 0!");
         }
 
-
         this.id = id;
         this.login = login;
         this.password = password;

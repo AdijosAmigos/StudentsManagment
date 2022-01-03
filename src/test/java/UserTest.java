@@ -12,8 +12,6 @@ class UserTest {
 
     @Test
     void should_throw_execption_when_id_lower_than_zero() {
-        //given
-        //when
         //then
         Assertions.assertThatThrownBy(() -> new User(-1L, null, null, null, null, null, UserType.STUDENT))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -22,8 +20,6 @@ class UserTest {
 
     @Test
     void should_throw_excepction_when_login_password_name_surename_PID_length_lower_or_equal_zero() {
-        //given
-        //when
         //then
         Assertions.assertThatThrownBy(() -> new User(1L, "", "", "", "", "", UserType.STUDENT))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -32,8 +28,6 @@ class UserTest {
 
     @Test
     void should_throw_exception_when_userType_is_null() {
-        //given
-        //when
         //then
         Assertions.assertThatThrownBy(() -> new User(1L, "adi", "123", "adrian", "nowak", "123456789", null))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -50,7 +44,6 @@ class UserTest {
         //then
         Assertions.assertThat(user.getCourses().isEmpty()).isFalse();
         Assertions.assertThat(user.gradesByCourseId(course.getId())).isEmpty();
-        //TODO: sprawdzić że lista ocen jest pusta pod kluczem courseId -> DONE
     }
 
 

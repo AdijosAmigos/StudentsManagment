@@ -47,7 +47,7 @@ class CourseTest {
         //when
         course.addStudent(user);
         //then
-        Assertions.assertThat(course.getStudents()).isNotEmpty().contains(user);
+        Assertions.assertThat(course.getStudents()).isNotEmpty().contains(user.getId());
     }
 }
 

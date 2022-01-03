@@ -5,16 +5,15 @@ import java.util.Objects;
 public class Course {
     private final Long id;
     private final String name;
-    private final List<User> students;
+    private final List<Long> studentIds;
 //TODO: linia 7 i wszystko co związane z lnia 7 przerobić z User na UserIds analogicznie jak z Long w courses -> do zbierania
 
-    public Course(Long id, String name) {
-
+    public Course (Long id, String name){
         this(id, name, new ArrayList<>());
-
     }
 
-    public Course(Long id, String name, List<User> students) {
+
+    public Course(Long id, String name, List<Long> studentIds) {
 
         if (id < 0) {
             throw new IllegalArgumentException("Course ID must be greater od equal to 0");
@@ -26,7 +25,7 @@ public class Course {
 
         this.id = id;
         this.name = name;
-        this.students = students;
+        this.studentIds = studentIds;
     }
 
     public Long getId() {
@@ -37,16 +36,15 @@ public class Course {
         return name;
     }
 
-    public List<User> getStudents() {
-        return students;
+    public List<Long> getStudents() {
+        return studentIds;
     }
 
     void addStudent(User user) {
         if (!(user.getType() == UserType.STUDENT)) {
             throw new IllegalArgumentException();
         }
-        students.add(user);
-
+        studentIds.add(user.getId());
     }
 
     @Override
@@ -54,12 +52,12 @@ public class Course {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Objects.equals(id, course.id) && Objects.equals(name, course.name) && Objects.equals(students, course.students);
+        return Objects.equals(id, course.id) && Objects.equals(name, course.name) && Objects.equals(studentIds, course.studentIds);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, students);
+        return Objects.hash(id, name, studentIds);
     }
 
     @Override
@@ -67,7 +65,7 @@ public class Course {
         return "Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", students=" + students +
+                ", students=" + studentIds +
                 '}';
     }
 }
