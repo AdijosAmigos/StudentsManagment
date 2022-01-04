@@ -1,5 +1,6 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -65,7 +66,6 @@ class CourseInMemoryRepositoryTest {
         Course expectedCourse = new Course(1L, "math");
 
         CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
-
         given(courseRepository.getById(expectedCourse.getId())).willReturn(expectedCourse);
 
         //when
@@ -108,7 +108,7 @@ class CourseInMemoryRepositoryTest {
         Assertions.assertThat(result).isEqualTo(course);
 
     }
-
+/*
     @Test
     void should_findAll_courses() {
         //given
@@ -121,6 +121,24 @@ class CourseInMemoryRepositoryTest {
         //then
         Assertions.assertThat(courseList).contains(course);
     }
+ */
+
+
+//problem ?
+    /*
+    @Test
+    void should_finAll_courses() {
+        //given
+        Course course = new Course(1L, "math");
+        Course expectedCourse = new Course(1L, "math");
+
+        CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
+        given(courseRepository.findAll()).willReturn());
+        //when
+        Course result = (Course) courseRepository.findAll();
+        //then
+    }
+     */
 
 
 }
