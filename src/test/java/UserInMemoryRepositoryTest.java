@@ -2,6 +2,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -116,5 +117,21 @@ class UserInMemoryRepositoryTest {
     }
  */
 
+
+    @Test
+    void should_findAll_users() {
+        //given
+        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
+        User expectedUser = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
+
+        UserRepository userRepository = Mockito.mock(UserRepository.class);
+        given(userRepository.findAll()).willReturn(new ArrayList<>());
+
+        //when
+        List<User> result = userRepository.findAll();
+        //then
+        verify(userRepository).findAll();
+        Assertions.assertThat(result).containsExactly(user);
+    }
 
 }
