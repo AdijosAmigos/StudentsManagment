@@ -97,6 +97,7 @@ class CourseInMemoryRepositoryTest {
         Course course = new Course(1L, "math");
         Course expectedCourse = new Course(1L, "math");
 
+
         CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
         given(courseRepository.delete(expectedCourse)).willReturn(expectedCourse);
 

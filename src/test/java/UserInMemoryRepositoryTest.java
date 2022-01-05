@@ -93,6 +93,7 @@ class UserInMemoryRepositoryTest {
         User expectedUser = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
 
         UserRepository userRepository = Mockito.mock(UserRepository.class);
+//        given(userRepository.save(expectedUser)).willReturn(expectedUser);
         given(userRepository.delete(expectedUser)).willReturn(expectedUser);
 
         //when
