@@ -25,12 +25,14 @@ public class CourseService {
 
     }
 
-    //TODO: napisać metode w courseService rezultat uczen bedzie miał ocene z danego kursu ->DONE?
 
     void assignGradeToStudent(Long userId, Long courseId, Grade grade) {
 
         User user = userRepository.getById(userId);
-        signUpStudentToCourse(userId, courseId); // -> nie zapisuje go na kurs tylko sprawdzam czy jest juz zapisany i jezeli nie jest to wyrzacam wyjkatek
+        if(user.getCourses().isEmpty()){
+            throw new IllegalArgumentException("Student is not signup in the course");
+        }
+//        signUpStudentToCourse(userId, courseId); // -> nie zapisuje go na kurs tylko sprawdzam czy jest juz zapisany i jezeli nie jest to wyrzacam wyjkatek
 
         user.addGrade(courseId, grade);
 

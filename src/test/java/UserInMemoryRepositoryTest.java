@@ -100,7 +100,7 @@ class UserInMemoryRepositoryTest {
         User result = userRepository.delete(user);
         //then
         verify(userRepository).delete(user);
-        Assertions.assertThat(result).isExactlyInstanceOf(user.getClass());
+        Assertions.assertThat(result).isEqualTo(user);
     }
 
 /*

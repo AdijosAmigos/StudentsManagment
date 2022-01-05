@@ -31,7 +31,7 @@ public class CourseInMemoryRepository implements CourseRepository {
 
     @Override
     public List<Course> findAll() {
-        return new ArrayList<Course>(idToCourse.values());
+        return new ArrayList<>(idToCourse.values());
 
     }
 }

@@ -25,6 +25,11 @@ public class Grade {
         return description;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "gradeValue=" + gradeValue +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
