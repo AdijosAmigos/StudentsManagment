@@ -67,11 +67,11 @@ class CourseServiceTest {
         Course course = new Course(1L, "math");
         Course expectedCourse = new Course(1L, "math");
         Grade grade = new Grade(GradeValue.FIVE);
-        Grade expectedGrade = new Grade(GradeValue.FIVE);
         User user = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
         User expectedUser = new User(1L, "adam", "12345", "adam", "nowak", "123456789", UserType.STUDENT);
 
-        expectedUser.subscribeToCourse(expectedCourse);
+        expectedUser.subscribeToCourse(course);
+        expectedUser.addGrade(course.getId(), grade);
         expectedCourse.addStudent(expectedUser);
 
         CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
@@ -85,15 +85,15 @@ class CourseServiceTest {
         given(courseRepository.getById(course.getId())).willReturn(course);
         given(userRepository.getById(user.getId())).willReturn(user);
 
-        User result = courseService.signUpStudentToCourse(user.getId(), course.getId());
+        courseService.signUpStudentToCourse(user.getId(), course.getId());
 
         //when
-        courseService.assignGradeToStudent(expectedUser.getId(), expectedCourse.getId(), expectedGrade);
+        courseService.assignGradeToStudent(user.getId(), course.getId(), grade);
 
         //then
         verify(userRepository).save(expectedUser);
         verify(courseRepository).save(expectedCourse);
-        Assertions.assertThat(result.gradesByCourseId(course.getId())).containsExactly(grade);
+        Assertions.assertThat(user.gradesByCourseId(course.getId())).containsExactly(grade);
 
     }
 

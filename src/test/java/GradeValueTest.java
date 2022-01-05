@@ -15,7 +15,6 @@ class GradeValueTest {
         Assertions.assertThat(GradeValue.FOUR.getValue()).isEqualTo(4.0f);
         Assertions.assertThat(GradeValue.FOUR_PLUS.getValue()).isEqualTo(4.5f);
         Assertions.assertThat(GradeValue.FIVE.getValue()).isEqualTo(5.0f);
-        //TODO: sprawdzić analogicznie kolejne oceny -> DONE
     }
 
 
