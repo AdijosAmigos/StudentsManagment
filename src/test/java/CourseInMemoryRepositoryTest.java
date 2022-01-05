@@ -1,6 +1,7 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -31,15 +32,14 @@ class CourseInMemoryRepositoryTest {
     void should_save_course() {
         //given
         Course course = new Course(1L, "math");
-        Course expectedCourse = new Course(1L, "math");
 
         CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
-        given(courseRepository.save(expectedCourse)).willReturn(expectedCourse);
+        given(courseRepository.save(course)).willReturn(course);
 
         //when
-        Course result = courseRepository.save(expectedCourse);
+        Course result = courseRepository.save(course);
         //then
-        verify(courseRepository).save(expectedCourse);
+//        verify(courseRepository).save(expectedCourse);
         Assertions.assertThat(result).isEqualTo(course);
 
     }
@@ -125,21 +125,36 @@ class CourseInMemoryRepositoryTest {
  */
 
 
-//problem ?
-    /*
     @Test
     void should_finAll_courses() {
         //given
         Course course = new Course(1L, "math");
-        Course expectedCourse = new Course(1L, "math");
 
-        CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
-        given(courseRepository.findAll()).willReturn());
+        Map<Long, Course> findAllMap = Map.of(course.getId(), course);
+        CourseRepository courseRepository = new CourseInMemoryRepository(findAllMap);
+
         //when
-        Course result = (Course) courseRepository.findAll();
+
+        List<Course> result = courseRepository.findAll();
         //then
+        Assertions.assertThat(result).containsExactly(course);
     }
-     */
+
+    @Test
+    void should_finAll_courses_with_mock () {
+        //given
+        Course course = new Course(1L, "math");
+
+        Map<Long, Course> findAllMap = Map.of(course.getId(), course);
+        CourseRepository courseRepository = new CourseInMemoryRepository(findAllMap);
+
+        //when
+
+        List<Course> result = courseRepository.findAll();
+        //then
+        Assertions.assertThat(result).containsExactly(course);
+    }
+
 
 
 }

@@ -73,6 +73,7 @@ class CourseServiceTest {
         expectedUser.subscribeToCourse(course);
         expectedUser.addGrade(course.getId(), grade);
         expectedCourse.addStudent(expectedUser);
+        user.subscribeToCourse(course);
 
         CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
         UserRepository userRepository = Mockito.mock(UserRepository.class);
@@ -85,14 +86,14 @@ class CourseServiceTest {
         given(courseRepository.getById(course.getId())).willReturn(course);
         given(userRepository.getById(user.getId())).willReturn(user);
 
-        courseService.signUpStudentToCourse(user.getId(), course.getId());
+//        courseService.signUpStudentToCourse(user.getId(), course.getId());
 
         //when
         courseService.assignGradeToStudent(user.getId(), course.getId(), grade);
 
         //then
         verify(userRepository).save(expectedUser);
-        verify(courseRepository).save(expectedCourse);
+//        verify(courseRepository).save(expectedCourse);
         Assertions.assertThat(user.gradesByCourseId(course.getId())).containsExactly(grade);
 
     }
