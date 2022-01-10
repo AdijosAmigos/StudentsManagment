@@ -5,134 +5,71 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 class UserInMemoryRepositoryTest {
-    /*
-        @Test
-        void should_save_user() {
-            //given
-            UserRepository userInMemoryRepository = new UserInMemoryRepository(new HashMap<Long, User>());
-            User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-            //when
-            User result = userInMemoryRepository.save(user);
-            //then
-            Assertions.assertThat(result).isEqualTo(user);
-        }
-
-     */
     @Test
     void should_save_user() {
         //given
         User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-        User expectedUser = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
 
         UserRepository userRepository = Mockito.mock(UserRepository.class);
-        given(userRepository.save(expectedUser)).willReturn(expectedUser);
+        given(userRepository.save(user)).willReturn(user);
 
         //when
         User result = userRepository.save(user);
-        //then
 
-        verify(userRepository).save(expectedUser);
+        //then
         Assertions.assertThat(result).isExactlyInstanceOf(user.getClass());
     }
-/*
-    @Test
-    void should_return_user_by_id() {
-        //given
-        HashMap<Long, User> map = new HashMap<>();
-        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-        UserRepository userInMemoryRepository = new UserInMemoryRepository(map);
-        userInMemoryRepository.save(user);
-        //when
-        User result = userInMemoryRepository.getById(user.getId());
-        //then
-        Assertions.assertThat(result).isEqualTo(user);
-        Assertions.assertThat(map.containsKey(user.getId())).isTrue();
-    }
- */
 
     @Test
     void should_return_user_by_id() {
         //given
         User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-        User expectedUser = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
 
         UserRepository userRepository = Mockito.mock(UserRepository.class);
-        given(userRepository.getById(expectedUser.getId())).willReturn(expectedUser);
+        given(userRepository.getById(user.getId())).willReturn(user);
 
         //when
         User result = userRepository.getById(user.getId());
         //then
-        verify(userRepository).getById(user.getId());
         Assertions.assertThat(result.getId()).isEqualTo(user.getId());
     }
-/*
-    @Test
-    void should_delete_user() {
-        //given
-        HashMap<Long, User> map = new HashMap<>();
-        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-        UserRepository userInMemoryRepository = new UserInMemoryRepository(map);
-        userInMemoryRepository.save(user);
-        //when
-        User result = userInMemoryRepository.delete(user);
-        //then
-        Assertions.assertThat(result).isEqualTo(user);
-    }
- */
+
 
     @Test
     void should_delete_user() {
         //given
         User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-        User expectedUser = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
 
         UserRepository userRepository = Mockito.mock(UserRepository.class);
-//        given(userRepository.save(expectedUser)).willReturn(expectedUser);
-        given(userRepository.delete(expectedUser)).willReturn(expectedUser);
+        given(userRepository.delete(user)).willReturn(user);
 
         //when
         User result = userRepository.delete(user);
+
         //then
-        verify(userRepository).delete(user);
         Assertions.assertThat(result).isEqualTo(user);
     }
-
-/*
-    @Test
-    void should_finall_users() {
-        //given
-        HashMap<Long, User> map = new HashMap<>();
-        User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-        UserRepository userInMemoryRepository = new UserInMemoryRepository(map);
-        userInMemoryRepository.save(user);
-        //when
-        List<User> userList = userInMemoryRepository.findAll();
-        //then
-        Assertions.assertThat(userList).contains(user);
-    }
- */
 
 
     @Test
     void should_findAll_users() {
         //given
         User user = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
-        User expectedUser = new User(1L, "adi", "1234567", "adrian", "nowak", "123456789", UserType.STUDENT);
 
-        UserRepository userRepository = Mockito.mock(UserRepository.class);
-        given(userRepository.save(expectedUser)).willReturn(expectedUser);
-        given(userRepository.findAll()).willReturn(new ArrayList<>());
+        Map<Long, User> findAllMap = (Map.of(user.getId(), user));
+        UserRepository userRepository = new UserInMemoryRepository(findAllMap);
 
         //when
         List<User> result = userRepository.findAll();
+
         //then
-        verify(userRepository).findAll();
         Assertions.assertThat(result).containsExactly(user);
     }
 
