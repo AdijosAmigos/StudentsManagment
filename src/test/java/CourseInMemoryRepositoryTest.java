@@ -15,19 +15,6 @@ import static org.mockito.Mockito.verify;
 
 class CourseInMemoryRepositoryTest {
 
-/*
-    @Test
-    void should_save_course() {
-        //given
-        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(new HashMap<>());
-        Course course = new Course(1L, "math", new ArrayList<>());
-        //when
-        Course result = courseInMemoryRepository.save(course);
-        //then
-        Assertions.assertThat(result).isEqualTo(course);
-    }
- */
-
     @Test
     void should_save_course() {
         //given
@@ -39,91 +26,41 @@ class CourseInMemoryRepositoryTest {
         //when
         Course result = courseRepository.save(course);
         //then
-//        verify(courseRepository).save(expectedCourse);
         Assertions.assertThat(result).isEqualTo(course);
 
     }
-/*
-    @Test
-    void should_return_course_by_id() {
-        //given
-        HashMap<Long, Course> map = new HashMap<>();
-        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        Course course = new Course(1L, "math");
-        courseInMemoryRepository.save(course);
-        //when
-        Course result = courseInMemoryRepository.getById(course.getId());
-        //then
-        Assertions.assertThat(result).isEqualTo(course);
-    }
-
- */
 
     @Test
     void should_return_course_by_id() {
         //given
         Course course = new Course(1L, "math");
-        Course expectedCourse = new Course(1L, "math");
 
         CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
-        given(courseRepository.getById(expectedCourse.getId())).willReturn(expectedCourse);
+        given(courseRepository.getById(course.getId())).willReturn(course);
 
         //when
         Course result = courseRepository.getById(course.getId());
 
         //then
-        verify(courseRepository).getById(expectedCourse.getId());
         Assertions.assertThat(result.getId()).isEqualTo(course.getId());
     }
 
-    /*
-    @Test
-    void should_delete_course() {
-        //given
-        HashMap<Long, Course> map = new HashMap<>();
-        Course course = new Course(1L, "math");
-        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        courseInMemoryRepository.save(course);
-        //when
-        Course result = courseInMemoryRepository.delete(course);
-        //then
-        Assertions.assertThat(result).isEqualTo(course);
-    }
-     */
 
     @Test
     void should_delete_course() {
         //given
         Course course = new Course(1L, "math");
-        Course expectedCourse = new Course(1L, "math");
-
 
         CourseRepository courseRepository = Mockito.mock(CourseRepository.class);
-        given(courseRepository.delete(expectedCourse)).willReturn(expectedCourse);
+        given(courseRepository.delete(course)).willReturn(course);
 
         //when
-        Course result = courseRepository.delete(expectedCourse);
+        Course result = courseRepository.delete(course);
 
         //then
-        verify(courseRepository).delete(course);
         Assertions.assertThat(result).isEqualTo(course);
 
     }
-/*
-    @Test
-    void should_findAll_courses() {
-        //given
-        Map<Long, Course> map = new HashMap<>();
-        Course course = new Course(1L, "math");
-        CourseRepository courseInMemoryRepository = new CourseInMemoryRepository(map);
-        courseInMemoryRepository.save(course);
-        //when
-        List<Course> courseList = courseInMemoryRepository.findAll();
-        //then
-        Assertions.assertThat(courseList).contains(course);
-    }
- */
-
 
     @Test
     void should_finAll_courses() {
@@ -134,27 +71,11 @@ class CourseInMemoryRepositoryTest {
         CourseRepository courseRepository = new CourseInMemoryRepository(findAllMap);
 
         //when
-
         List<Course> result = courseRepository.findAll();
+
         //then
         Assertions.assertThat(result).containsExactly(course);
     }
-
-    @Test
-    void should_finAll_courses_with_mock () {
-        //given
-        Course course = new Course(1L, "math");
-
-        Map<Long, Course> findAllMap = Map.of(course.getId(), course);
-        CourseRepository courseRepository = new CourseInMemoryRepository(findAllMap);
-
-        //when
-
-        List<Course> result = courseRepository.findAll();
-        //then
-        Assertions.assertThat(result).containsExactly(course);
-    }
-
 
 
 }

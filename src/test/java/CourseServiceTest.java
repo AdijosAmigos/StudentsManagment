@@ -86,14 +86,12 @@ class CourseServiceTest {
         given(courseRepository.getById(course.getId())).willReturn(course);
         given(userRepository.getById(user.getId())).willReturn(user);
 
-//        courseService.signUpStudentToCourse(user.getId(), course.getId());
 
         //when
         courseService.assignGradeToStudent(user.getId(), course.getId(), grade);
 
         //then
         verify(userRepository).save(expectedUser);
-//        verify(courseRepository).save(expectedCourse);
         Assertions.assertThat(user.gradesByCourseId(course.getId())).containsExactly(grade);
 
     }
@@ -128,7 +126,6 @@ class CourseServiceTest {
         verify(courseRepository).save(expectedCourse);
         Assertions.assertThat(result.getCourses()).containsExactly(course.getId());
 
-        //TODO: przepisac wszystkie testy do mokito courseService, course in memory repository, userinmemoryreposiotry
 
     }
 
